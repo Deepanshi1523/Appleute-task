@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Calendar from './Calendar';
+import EventPopup from './EventPopup';
 
-function App() {
+const App = () => {
+  const [events, setEvents] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Calendar events={events} setSelectedDate={setSelectedDate} />
+      <EventPopup
+        selectedDate={selectedDate}
+        events={events}
+        setEvents={setEvents}
+        onClose={() => setSelectedDate(null)}
+      />
     </div>
   );
-}
+};
 
 export default App;
