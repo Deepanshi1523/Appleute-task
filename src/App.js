@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
-import Calendar from './Calendar';
-import EventPopup from './EventPopup';
+import CalendarComponent from './Components/CalendarComponent';
+import TasksContainer from './Components/TasksContainer';
+import './App.css';
 
-const App = () => {
-  const [events, setEvents] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(null);
-
+function App() {
+  const [tasks, setTasks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   return (
-    <div>
-      <Calendar events={events} setSelectedDate={setSelectedDate} />
-      <EventPopup
-        selectedDate={selectedDate}
-        events={events}
-        setEvents={setEvents}
-        onClose={() => setSelectedDate(null)}
-      />
+    <div className="app-container">
+      <h1 className="centered-h1">Task Scheduler</h1>
+      <div className='scheduler-component'>
+        <CalendarComponent tasks={tasks} setTasks={setTasks}/>
+        <TasksContainer tasks={tasks} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+      </div>
     </div>
   );
-};
+}
 
 export default App;

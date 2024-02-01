@@ -1,0 +1,36 @@
+.custom-calendar {
+  font-family: 'Arial, sans-serif';
+  width: 55%;
+  height: auto;
+  font-size: 115%;
+  margin-right: 10%;
+  border-radius: 10px;
+}
+
+.react-calendar__tile {
+  border: 1px solid #ccc;
+  height: 64px;
+}
+
+.react-calendar__tile--active {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 15px;
+}
+
+.react-calendar__tile--now{
+  border-radius: 15px;
+}
+
+.react-calendar__navigation{
+  margin-bottom: 0;
+}
+
+.calendar-container {
+  position: relative;
+}
+
+.task-highlight {
+  background-color: #8ac4ff !important; /* Use !important to ensure the style takes precedence */
+  border-radius: 50%;
+}
