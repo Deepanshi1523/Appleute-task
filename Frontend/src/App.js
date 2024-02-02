@@ -11,7 +11,7 @@ function App() {
       <h1 className="centered-h1">Task Scheduler</h1>
       <div className='scheduler-component'>
         <CalendarComponent tasks={tasks} setTasks={setTasks}/>
-        <TasksContainer tasks={tasks} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+        <TasksContainer tasks={tasks} setTasks={setTasks} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
       </div>
     </div>
   );

@@ -3,9 +3,9 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import EventModal from './EventModal';
 
-import './CustomCalendarStyles.css'; // Import your custom styles
+import './CustomCalendarStyles.css';
 
-function CalendarComponent({ tasks, setTasks }) {
+function CalendarComponent({ tasks, setTasks, updateTasks }) {
   const [date, setDate] = useState(new Date());
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -37,7 +37,7 @@ function CalendarComponent({ tasks, setTasks }) {
         value={date}
         tileClassName={tileClassName}
       />
-      {isModalOpen && <EventModal date={date} onClose={closeModal} tasks={tasks} setTasks={setTasks} />}
+      {isModalOpen && <EventModal date={date} onClose={closeModal} tasks={tasks} setTasks={setTasks} updateTasks={updateTasks}/>}
     </>
   );
 }

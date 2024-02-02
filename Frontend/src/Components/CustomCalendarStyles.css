@@ -31,6 +31,6 @@
 }
 
 .task-highlight {
-  background-color: #8ac4ff !important; /* Use !important to ensure the style takes precedence */
+  background-color: #8ac4ff; /* Use the color you want to highlight the date */
   border-radius: 50%;
 }

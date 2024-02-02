@@ -1,0 +1,81 @@
+.tasks{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search{
+  width: 90%;
+  height: 25px;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.tasks-container{
+  padding: 10px;
+  padding-top: 0;
+  border: 1px solid #a0a096;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25vw;
+}
+
+.tasks {
+  font-size: 1.5em;
+  color: #333;
+}
+
+.search {
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 1em;
+}
+
+ul {
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100% ;
+  overflow-y: auto;
+  list-style-type: none;
+  padding: 0;
+}
+
+ul::-webkit-scrollbar {
+  width: 4px; /* Set the width of the scrollbar */
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-color: #007bff; /* Set the color of the scrollbar thumb */
+  border-radius: 4px; /* Round the corners of the thumb */
+}
+
+ul::-webkit-scrollbar-track {
+  background-color: none; /* Set the color of the scrollbar track */
+}
+
+li {
+  margin: 10px 10px 10px 0px;
+  width: 80%;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: solid 1px black;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Set the number of lines to display */
+  -webkit-box-orient: vertical;
+}
+
+strong {
+  color: #007bff;
+}
