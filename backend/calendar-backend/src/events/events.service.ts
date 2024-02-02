@@ -13,6 +13,14 @@ export class EventsService {
 
   addEvent(event) {
     const eventWithId = { ...event, id: uuidv4() };
+  
+    // Parse start time and end time to Date objects
+    const parsedStartTime = new Date(eventWithId.startTime);
+    const parsedEndTime = new Date(eventWithId.endTime);
+  
+    eventWithId.startTime = parsedStartTime;
+    eventWithId.endTime = parsedEndTime;
+  
     this.events.push(eventWithId);
     return eventWithId;
   }

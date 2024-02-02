@@ -33,9 +33,10 @@ const EventModal = ({ date, onClose, tasks, setTasks }) => {
     setWarning('');
 
     const formData = new FormData();
+    formData.append('startTime', selectedDateTime.toISOString());
     formData.append('title', title);
     formData.append('description', description);
-    formData.append('startTime', startTime);
+    // formData.append('startTime', startTime);
     formData.append('endTime', endTime);
     formData.append('mediaFile', mediaFile);
 
@@ -80,11 +81,13 @@ const EventModal = ({ date, onClose, tasks, setTasks }) => {
     }
   };
 
+  const formattedDate = date instanceof Date ? date.toLocaleString() : '';
+
   return (
     <div className="event-modal">
       <div className="modal-content">
         <h2>Add Event</h2>
-        <p>Date: {date.toDateString()}</p>
+        <p>Date: {date ? date.toLocaleDateString() : ''}</p>
         <form className="form-div">
           <div className="event-header">
             <label>Title:</label>

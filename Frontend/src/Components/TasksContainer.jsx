@@ -20,7 +20,15 @@ function TasksContainer({ searchTerm, setSearchTerm }) {
 
   const formatDate = (dateString) => {
     try {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true,
+      };
       const formattedDate = new Date(dateString).toLocaleDateString(undefined, options);
       return formattedDate;
     } catch (error) {
@@ -63,7 +71,6 @@ function TasksContainer({ searchTerm, setSearchTerm }) {
               />
             )}
             <strong>Title:</strong> {task.title} <br />
-            {console.log(task.title)}
             <strong className='description'>Description:</strong> {task.description} <br />
             <strong>Date:</strong> {formatDate(task.startTime)} <br />
             <strong>Time:</strong> {task.startTime} to {task.endTime} <br />
