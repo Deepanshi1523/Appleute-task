@@ -10,6 +10,15 @@ const EventModal = ({ date, onClose, tasks, setTasks }) => {
   const [endTime, setEndTime] = useState('13:00');
   const [mediaFile, setMediaFile] = useState(null);
   const [warning, setWarning] = useState('');
+  
+
+  const handleFileChange = (e) => {
+    console.log(e);
+    setMediaFile({
+      file: e.target.files[0],
+      filename: e.target.files[0].name,
+    });
+  };
 
   const handleSubmit = async () => {
     if (compareTimes(startTime, endTime) === 1) {
@@ -32,13 +41,17 @@ const EventModal = ({ date, onClose, tasks, setTasks }) => {
     // Clear the warning if the condition is met
     setWarning('');
 
+    const formattedStartTime = selectedDateTime.toISOString();
+
+    const selectedEndTime = new Date(`${date.toDateString()} ${endTime}`);
+    const formattedEndTime = selectedEndTime.toISOString();
+
     const formData = new FormData();
-    formData.append('startTime', selectedDateTime.toISOString());
+    formData.append('startTime', formattedStartTime);
+    formData.append('endTime', formattedEndTime);
     formData.append('title', title);
     formData.append('description', description);
-    // formData.append('startTime', startTime);
-    formData.append('endTime', endTime);
-    formData.append('mediaFile', mediaFile);
+    formData.append('mediaFile', mediaFile.file);
 
     try {
       const response = await axios.post('http://localhost:3001/events', formData, {
@@ -82,6 +95,7 @@ const EventModal = ({ date, onClose, tasks, setTasks }) => {
   };
 
   const formattedDate = date instanceof Date ? date.toLocaleString() : '';
+  
 
   return (
     <div className="event-modal">
@@ -126,7 +140,7 @@ const EventModal = ({ date, onClose, tasks, setTasks }) => {
 
           <div className="media-div">
             <label>Media (Picture/Video) : </label>
-            <input type="file" onChange={(e) => setMediaFile(e.target.files[0])} />
+            <input type="file" onChange={handleFileChange} />
           </div>
 
           {warning && <div className="warning">{warning}</div>}
@@ -140,7 +154,7 @@ const EventModal = ({ date, onClose, tasks, setTasks }) => {
             </button>
           </div>
         </form>
-      </div>
+        </div>
     </div>
   );
 };

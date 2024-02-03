@@ -24,6 +24,23 @@ export class EventsService {
     this.events.push(eventWithId);
     return eventWithId;
   }
+
+  updateEvent(id: string, updatedEvent) {
+    const index = this.events.findIndex(event => event.id === id);
+    if (index !== -1) {
+      // Parse start time and end time to Date objects
+      const parsedStartTime = new Date(updatedEvent.startTime);
+      const parsedEndTime = new Date(updatedEvent.endTime);
+
+      updatedEvent.startTime = parsedStartTime;
+      updatedEvent.endTime = parsedEndTime;
+
+      this.events[index] = { ...this.events[index], ...updatedEvent };
+      return this.events[index];
+    }
+    return null;
+  }
+
   deleteEventById(id: string) {
     const index = this.events.findIndex(event => event.id === id);
     if (index !== -1) {
